@@ -3,6 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { FileUpload } from '@/components/FileUpload';
+import { BatchList } from '@/components/BatchList';
+import { LettersList } from '@/components/LettersList';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { supabase } from '@/integrations/supabase/client';
 import { useLocale } from '@/hooks/useLocale';
 
@@ -11,6 +15,7 @@ const Dashboard = () => {
   const { locale } = useLocale();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -42,51 +47,31 @@ const Dashboard = () => {
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-4">{t('welcomeMessage')}</h1>
-          <p className="text-xl text-muted-foreground mb-8">{t('phase1Ready')}</p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <div className="p-6 rounded-lg border bg-card">
-              <div className="text-5xl mb-4">📧</div>
-              <h3 className="text-xl font-semibold mb-2">
-                {locale === 'de' ? 'Upload-Funktion' : 'Upload Feature'}
-              </h3>
-              <p className="text-muted-foreground">
-                {locale === 'de' ? 'Kommt in Phase 2' : 'Coming in Phase 2'}
-              </p>
-            </div>
-            
-            <div className="p-6 rounded-lg border bg-card">
-              <div className="text-5xl mb-4">🤖</div>
-              <h3 className="text-xl font-semibold mb-2">
-                {locale === 'de' ? 'KI-Analyse' : 'AI Analysis'}
-              </h3>
-              <p className="text-muted-foreground">
-                {locale === 'de' ? 'Kommt in Phase 3' : 'Coming in Phase 3'}
-              </p>
-            </div>
-            
-            <div className="p-6 rounded-lg border bg-card">
-              <div className="text-5xl mb-4">📅</div>
-              <h3 className="text-xl font-semibold mb-2">
-                {locale === 'de' ? 'Kalender-Integration' : 'Calendar Integration'}
-              </h3>
-              <p className="text-muted-foreground">
-                {locale === 'de' ? 'Kommt in Phase 4' : 'Coming in Phase 4'}
-              </p>
-            </div>
-            
-            <div className="p-6 rounded-lg border bg-card">
-              <div className="text-5xl mb-4">💳</div>
-              <h3 className="text-xl font-semibold mb-2">
-                {locale === 'de' ? 'Abrechnung' : 'Billing'}
-              </h3>
-              <p className="text-muted-foreground">
-                {locale === 'de' ? 'Kommt in Phase 5' : 'Coming in Phase 5'}
-              </p>
-            </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-4xl font-bold mb-2">{t('dashboard')}</h1>
+            <p className="text-muted-foreground">{t('dashboardDesc')}</p>
           </div>
+
+          <Tabs defaultValue="upload" className="space-y-6">
+            <TabsList>
+              <TabsTrigger value="upload">{t('upload')}</TabsTrigger>
+              <TabsTrigger value="batches">{t('batches')}</TabsTrigger>
+              <TabsTrigger value="letters">{t('letters')}</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="upload" className="space-y-6">
+              <FileUpload onUploadComplete={() => setRefreshTrigger(prev => prev + 1)} />
+            </TabsContent>
+
+            <TabsContent value="batches" className="space-y-6">
+              <BatchList refreshTrigger={refreshTrigger} />
+            </TabsContent>
+
+            <TabsContent value="letters" className="space-y-6">
+              <LettersList refreshTrigger={refreshTrigger} />
+            </TabsContent>
+          </Tabs>
         </div>
       </main>
       

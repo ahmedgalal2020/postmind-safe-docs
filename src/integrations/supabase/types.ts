@@ -14,6 +14,98 @@ export type Database = {
   }
   public: {
     Tables: {
+      batches: {
+        Row: {
+          created_at: string
+          files_count: number
+          id: string
+          name: string
+          user_id: string
+          zip_url: string | null
+        }
+        Insert: {
+          created_at?: string
+          files_count?: number
+          id?: string
+          name: string
+          user_id: string
+          zip_url?: string | null
+        }
+        Update: {
+          created_at?: string
+          files_count?: number
+          id?: string
+          name?: string
+          user_id?: string
+          zip_url?: string | null
+        }
+        Relationships: []
+      }
+      letters: {
+        Row: {
+          batch_id: string
+          created_at: string
+          file_size: number
+          file_url: string
+          filename: string
+          id: string
+          status: string
+          user_id: string
+        }
+        Insert: {
+          batch_id: string
+          created_at?: string
+          file_size: number
+          file_url: string
+          filename: string
+          id?: string
+          status?: string
+          user_id: string
+        }
+        Update: {
+          batch_id?: string
+          created_at?: string
+          file_size?: number
+          file_url?: string
+          filename?: string
+          id?: string
+          status?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "letters_batch_id_fkey"
+            columns: ["batch_id"]
+            isOneToOne: false
+            referencedRelation: "batches"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      usage_counters: {
+        Row: {
+          created_at: string
+          id: string
+          period_month: string
+          uploaded_count: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          period_month: string
+          uploaded_count?: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          period_month?: string
+          uploaded_count?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       users_app: {
         Row: {
           address_street: string
