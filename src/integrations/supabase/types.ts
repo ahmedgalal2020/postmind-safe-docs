@@ -45,31 +45,61 @@ export type Database = {
         Row: {
           batch_id: string
           created_at: string
+          due_date: string | null
           file_size: number
           file_url: string
           filename: string
           id: string
+          letter_type: string | null
+          priority_int: number | null
+          raw_text_enc: string | null
+          risk_level: string | null
+          sender_enc: string | null
+          sender_name: string | null
           status: string
+          subject: string | null
+          summary_enc: string | null
+          tags_enc: string | null
           user_id: string
         }
         Insert: {
           batch_id: string
           created_at?: string
+          due_date?: string | null
           file_size: number
           file_url: string
           filename: string
           id?: string
+          letter_type?: string | null
+          priority_int?: number | null
+          raw_text_enc?: string | null
+          risk_level?: string | null
+          sender_enc?: string | null
+          sender_name?: string | null
           status?: string
+          subject?: string | null
+          summary_enc?: string | null
+          tags_enc?: string | null
           user_id: string
         }
         Update: {
           batch_id?: string
           created_at?: string
+          due_date?: string | null
           file_size?: number
           file_url?: string
           filename?: string
           id?: string
+          letter_type?: string | null
+          priority_int?: number | null
+          raw_text_enc?: string | null
+          risk_level?: string | null
+          sender_enc?: string | null
+          sender_name?: string | null
           status?: string
+          subject?: string | null
+          summary_enc?: string | null
+          tags_enc?: string | null
           user_id?: string
         }
         Relationships: [
@@ -81,6 +111,36 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      rules: {
+        Row: {
+          created_at: string
+          id: string
+          keyword: string
+          severity_int: number
+          tag: string | null
+          user_id: string
+          weight_int: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          keyword: string
+          severity_int?: number
+          tag?: string | null
+          user_id: string
+          weight_int?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          keyword?: string
+          severity_int?: number
+          tag?: string | null
+          user_id?: string
+          weight_int?: number
+        }
+        Relationships: []
       }
       usage_counters: {
         Row: {
@@ -110,6 +170,8 @@ export type Database = {
         Row: {
           address_street: string
           address_zip: string
+          ai_consent: boolean | null
+          ai_mode: string | null
           business_email: string
           city: string
           company_name: string
@@ -126,6 +188,8 @@ export type Database = {
         Insert: {
           address_street: string
           address_zip: string
+          ai_consent?: boolean | null
+          ai_mode?: string | null
           business_email: string
           city: string
           company_name: string
@@ -142,6 +206,8 @@ export type Database = {
         Update: {
           address_street?: string
           address_zip?: string
+          ai_consent?: boolean | null
+          ai_mode?: string | null
           business_email?: string
           city?: string
           company_name?: string

@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 import { supabase } from '@/integrations/supabase/client';
 import { useLocale } from '@/hooks/useLocale';
 import { useToast } from '@/hooks/use-toast';
@@ -26,7 +27,9 @@ const Company = () => {
     city: '',
     country: '',
     businessEmail: '',
-    language: 'de'
+    language: 'de',
+    aiConsent: false,
+    aiMode: 'local' as 'local' | 'ai',
   });
 
   useEffect(() => {
@@ -60,7 +63,9 @@ const Company = () => {
           city: data.city,
           country: data.country,
           businessEmail: data.business_email,
-          language: data.language
+          language: data.language,
+          aiConsent: data.ai_consent || false,
+          aiMode: (data.ai_mode as 'local' | 'ai') || 'local',
         });
       }
       
@@ -91,7 +96,9 @@ const Company = () => {
           city: formData.city,
           country: formData.country,
           business_email: formData.businessEmail,
-          language: formData.language
+          language: formData.language,
+          ai_consent: formData.aiConsent,
+          ai_mode: formData.aiMode,
         })
         .eq('id', session.user.id);
       
@@ -217,6 +224,72 @@ const Company = () => {
                 <option value="de">{t('german')}</option>
                 <option value="en">{t('english')}</option>
               </select>
+            </div>
+            
+            <div className="space-y-4 border-t pt-4">
+              <h3 className="font-semibold">
+                {locale === 'de' ? 'KI-Einstellungen' : 'AI Settings'}
+              </h3>
+              
+              <div className="flex items-start space-x-3">
+                <Checkbox
+                  id="aiConsent"
+                  checked={formData.aiConsent}
+                  onCheckedChange={(checked) => 
+                    setFormData({ ...formData, aiConsent: checked as boolean })
+                  }
+                />
+                <div className="grid gap-1.5 leading-none">
+                  <Label htmlFor="aiConsent" className="cursor-pointer">
+                    {locale === 'de' 
+                      ? 'EU-KI-Modus aktivieren (optional)' 
+                      : 'Enable EU AI Mode (optional)'}
+                  </Label>
+                  <p className="text-sm text-muted-foreground">
+                    {locale === 'de'
+                      ? 'Erlaubt KI-basierte Extraktion mit EU-Servern. Ohne Zustimmung läuft nur lokale Verarbeitung im Browser.'
+                      : 'Allows AI-powered extraction with EU servers. Without consent, only local browser processing runs.'}
+                  </p>
+                </div>
+              </div>
+
+              {formData.aiConsent && (
+                <div className="space-y-2 pl-6">
+                  <Label>
+                    {locale === 'de' ? 'KI-Modus' : 'AI Mode'}
+                  </Label>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="radio"
+                        id="local-mode"
+                        name="aiMode"
+                        value="local"
+                        checked={formData.aiMode === 'local'}
+                        onChange={(e) => setFormData({ ...formData, aiMode: 'local' })}
+                        className="h-4 w-4"
+                      />
+                      <Label htmlFor="local-mode" className="cursor-pointer font-normal">
+                        {locale === 'de' ? 'Nur lokal (Standard)' : 'Local Only (Default)'}
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="radio"
+                        id="ai-mode"
+                        name="aiMode"
+                        value="ai"
+                        checked={formData.aiMode === 'ai'}
+                        onChange={(e) => setFormData({ ...formData, aiMode: 'ai' })}
+                        className="h-4 w-4"
+                      />
+                      <Label htmlFor="ai-mode" className="cursor-pointer font-normal">
+                        {locale === 'de' ? 'EU-KI (Google Gemini)' : 'EU AI (Google Gemini)'}
+                      </Label>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
             
             <Button type="submit" className="w-full" disabled={isSaving}>

@@ -8,6 +8,7 @@ import Signup from "./pages/auth/Signup";
 import Login from "./pages/auth/Login";
 import Dashboard from "./pages/Dashboard";
 import Company from "./pages/Company";
+import LetterDetail from "./pages/LetterDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/:locale/auth/login" element={<Login />} />
           <Route path="/:locale/dashboard" element={<Dashboard />} />
           <Route path="/:locale/company" element={<Company />} />
+          <Route path="/:locale/letters/:id" element={<LetterDetail />} />
           
           {/* Placeholder routes for footer links */}
           <Route path="/:locale/pricing" element={<div className="min-h-screen flex items-center justify-center">Pricing - Coming Soon</div>} />

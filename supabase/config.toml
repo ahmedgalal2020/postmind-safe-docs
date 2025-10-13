@@ -1,1 +1,7 @@
 project_id = "pfhrbcvhjumqvjcxbose"
+
+[functions.generate-batch-zip]
+verify_jwt = true
+
+[functions.extract-letter]
+verify_jwt = true
