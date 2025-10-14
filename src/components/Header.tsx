@@ -33,7 +33,7 @@ export const Header = () => {
     <header className="border-b bg-background">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to={`/${locale}/`} className="text-2xl font-bold text-primary">
-          {t('landingTitle')}
+          {t('brand')}
         </Link>
         
         <nav className="flex items-center gap-4">

@@ -20,7 +20,7 @@ export const Footer = () => {
           </div>
           
           <div>
-            <h3 className="font-semibold mb-3">{t('help')}</h3>
+            <h3 className="font-semibold mb-3">{t('support')}</h3>
             <ul className="space-y-2">
               <li><Link to={`/${locale}/faq`} className="text-muted-foreground hover:text-foreground">{t('faq')}</Link></li>
               <li><Link to={`/${locale}/support`} className="text-muted-foreground hover:text-foreground">{t('support')}</Link></li>

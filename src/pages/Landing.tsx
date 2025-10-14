@@ -36,25 +36,25 @@ const Landing = () => {
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="p-6 rounded-lg border bg-card">
               <div className="text-4xl mb-3">🔒</div>
-              <h3 className="font-semibold mb-2">DSGVO-konform</h3>
+              <h3 className="font-semibold mb-2">{t('feature.gdpr.title')}</h3>
               <p className="text-sm text-muted-foreground">
-                100% EU-Datenhoheit in Frankfurt
+                {t('feature.gdpr.desc')}
               </p>
             </div>
             
             <div className="p-6 rounded-lg border bg-card">
               <div className="text-4xl mb-3">🤖</div>
-              <h3 className="font-semibold mb-2">KI-gestützt</h3>
+              <h3 className="font-semibold mb-2">{t('feature.ai.title')}</h3>
               <p className="text-sm text-muted-foreground">
-                Automatische Analyse und Klassifizierung
+                {t('feature.ai.desc')}
               </p>
             </div>
             
             <div className="p-6 rounded-lg border bg-card">
               <div className="text-4xl mb-3">📅</div>
-              <h3 className="font-semibold mb-2">Smart Calendar</h3>
+              <h3 className="font-semibold mb-2">{t('feature.calendar.title')}</h3>
               <p className="text-sm text-muted-foreground">
-                Fristen automatisch erkennen
+                {t('feature.calendar.desc')}
               </p>
             </div>
           </div>
