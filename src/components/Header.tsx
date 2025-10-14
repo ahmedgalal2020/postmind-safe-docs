@@ -42,6 +42,12 @@ export const Header = () => {
               <Link to={`/${locale}/dashboard`}>
                 <Button variant="ghost">{t('dashboard')}</Button>
               </Link>
+              <Link to={`/${locale}/rules`}>
+                <Button variant="ghost">{t('rules')}</Button>
+              </Link>
+              <Link to={`/${locale}/calendar`}>
+                <Button variant="ghost">{t('calendar')}</Button>
+              </Link>
               <Link to={`/${locale}/company`}>
                 <Button variant="ghost">{t('company')}</Button>
               </Link>

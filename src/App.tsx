@@ -9,6 +9,8 @@ import Login from "./pages/auth/Login";
 import Dashboard from "./pages/Dashboard";
 import Company from "./pages/Company";
 import LetterDetail from "./pages/LetterDetail";
+import Rules from "./pages/Rules";
+import Calendar from "./pages/Calendar";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +32,8 @@ const App = () => (
           <Route path="/:locale/dashboard" element={<Dashboard />} />
           <Route path="/:locale/company" element={<Company />} />
           <Route path="/:locale/letters/:id" element={<LetterDetail />} />
+          <Route path="/:locale/rules" element={<Rules />} />
+          <Route path="/:locale/calendar" element={<Calendar />} />
           
           {/* Placeholder routes for footer links */}
           <Route path="/:locale/pricing" element={<div className="min-h-screen flex items-center justify-center">Pricing - Coming Soon</div>} />

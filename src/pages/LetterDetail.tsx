@@ -15,7 +15,8 @@ import { decryptFile, getOrCreateKey } from '@/lib/encryption';
 import { extractTextLocal } from '@/lib/ocr';
 import { extractLocal, extractWithAI, ExtractionResult } from '@/lib/aiExtraction';
 import { computePriority } from '@/lib/priorityEngine';
-import { FileText, Loader2, Save, RefreshCw, Zap } from 'lucide-react';
+import { FileText, Loader2, Save, RefreshCw, Zap, Calendar as CalendarIcon } from 'lucide-react';
+import { addDays, setHours, setMinutes, parseISO } from 'date-fns';
 
 const LetterDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -189,6 +190,50 @@ const LetterDetail = () => {
       });
     } finally {
       setIsProcessing(false);
+    }
+  };
+
+  const addToCalendar = async () => {
+    if (!extractionResult?.due_date) {
+      toast({
+        title: t('noDueDate'),
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) throw new Error('Not authenticated');
+
+      const dueDate = parseISO(extractionResult.due_date);
+      
+      // Create preparation block 2 days before at 10:00 (45 min default)
+      const prepStart = setMinutes(setHours(addDays(dueDate, -2), 10), 0);
+      const prepEnd = setMinutes(setHours(addDays(dueDate, -2), 10), 45);
+
+      const { error } = await supabase.from('events').insert({
+        user_id: user.id,
+        letter_id: id,
+        title: t('preparationFor') + ': ' + (extractionResult.subject || letter.filename),
+        start_time: prepStart.toISOString(),
+        end_time: prepEnd.toISOString(),
+        status: 'tentative',
+        risk_level: extractionResult.risk_level,
+        priority_int: letter.priority_int || 0,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: t('addedToCalendar'),
+      });
+    } catch (error) {
+      console.error('Error adding to calendar:', error);
+      toast({
+        title: t('errorAddingToCalendar'),
+        variant: 'destructive',
+      });
     }
   };
 
@@ -382,6 +427,12 @@ const LetterDetail = () => {
                       <Save className="mr-2 h-4 w-4" />
                       {t('saveChanges')}
                     </Button>
+                    {extractionResult.due_date && (
+                      <Button onClick={addToCalendar} variant="outline" className="w-full">
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {t('addToCalendar')}
+                      </Button>
+                    )}
                   </div>
                 </div>
               ) : (
