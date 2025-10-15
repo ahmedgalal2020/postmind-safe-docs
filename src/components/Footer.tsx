@@ -29,11 +29,12 @@ export const Footer = () => {
           </div>
           
           <div>
-            <h3 className="font-semibold mb-3">{t('privacy')}</h3>
+            <h3 className="font-semibold mb-3">{t('legal')}</h3>
             <ul className="space-y-2">
               <li><Link to={`/${locale}/legal/privacy`} className="text-muted-foreground hover:text-foreground">{t('privacy')}</Link></li>
               <li><Link to={`/${locale}/legal/terms`} className="text-muted-foreground hover:text-foreground">{t('terms')}</Link></li>
               <li><Link to={`/${locale}/legal/impressum`} className="text-muted-foreground hover:text-foreground">{t('impressum')}</Link></li>
+              <li><Link to={`/${locale}/legal/avv`} className="text-muted-foreground hover:text-foreground">{t('avv')}</Link></li>
             </ul>
           </div>
         </div>

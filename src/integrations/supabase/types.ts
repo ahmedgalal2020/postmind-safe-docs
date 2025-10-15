@@ -227,9 +227,14 @@ export type Database = {
           company_name: string
           country: string
           created_at: string
+          current_period_end: string | null
+          files_uploaded_this_month: number | null
           id: string
           language: string
           plan: string
+          stripe_customer_id: string | null
+          stripe_subscription_id: string | null
+          subscription_status: string | null
           trial_expires_at: string | null
           trial_started_at: string | null
           updated_at: string
@@ -245,9 +250,14 @@ export type Database = {
           company_name: string
           country: string
           created_at?: string
+          current_period_end?: string | null
+          files_uploaded_this_month?: number | null
           id: string
           language?: string
           plan?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          subscription_status?: string | null
           trial_expires_at?: string | null
           trial_started_at?: string | null
           updated_at?: string
@@ -263,9 +273,14 @@ export type Database = {
           company_name?: string
           country?: string
           created_at?: string
+          current_period_end?: string | null
+          files_uploaded_this_month?: number | null
           id?: string
           language?: string
           plan?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          subscription_status?: string | null
           trial_expires_at?: string | null
           trial_started_at?: string | null
           updated_at?: string

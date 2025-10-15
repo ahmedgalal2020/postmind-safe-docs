@@ -11,6 +11,11 @@ import Company from "./pages/Company";
 import LetterDetail from "./pages/LetterDetail";
 import Rules from "./pages/Rules";
 import Calendar from "./pages/Calendar";
+import Billing from "./pages/Billing";
+import Impressum from "./pages/legal/Impressum";
+import Privacy from "./pages/legal/Privacy";
+import Terms from "./pages/legal/Terms";
+import AVV from "./pages/legal/AVV";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,17 +39,21 @@ const App = () => (
           <Route path="/:locale/letters/:id" element={<LetterDetail />} />
           <Route path="/:locale/rules" element={<Rules />} />
           <Route path="/:locale/calendar" element={<Calendar />} />
+          <Route path="/:locale/dashboard/billing" element={<Billing />} />
           
-          {/* Placeholder routes for footer links */}
+          {/* Legal pages */}
+          <Route path="/:locale/legal/privacy" element={<Privacy />} />
+          <Route path="/:locale/legal/terms" element={<Terms />} />
+          <Route path="/:locale/legal/impressum" element={<Impressum />} />
+          <Route path="/:locale/legal/avv" element={<AVV />} />
+          
+          {/* Placeholder routes */}
           <Route path="/:locale/pricing" element={<div className="min-h-screen flex items-center justify-center">Pricing - Coming Soon</div>} />
           <Route path="/:locale/contact" element={<div className="min-h-screen flex items-center justify-center">Contact - Coming Soon</div>} />
           <Route path="/:locale/blog" element={<div className="min-h-screen flex items-center justify-center">Blog - Coming Soon</div>} />
           <Route path="/:locale/faq" element={<div className="min-h-screen flex items-center justify-center">FAQ - Coming Soon</div>} />
           <Route path="/:locale/support" element={<div className="min-h-screen flex items-center justify-center">Support - Coming Soon</div>} />
           <Route path="/:locale/docs" element={<div className="min-h-screen flex items-center justify-center">Documentation - Coming Soon</div>} />
-          <Route path="/:locale/legal/privacy" element={<div className="min-h-screen flex items-center justify-center">Privacy Policy - Coming Soon</div>} />
-          <Route path="/:locale/legal/terms" element={<div className="min-h-screen flex items-center justify-center">Terms of Service - Coming Soon</div>} />
-          <Route path="/:locale/legal/impressum" element={<div className="min-h-screen flex items-center justify-center">Impressum - Coming Soon</div>} />
           
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
