@@ -2,18 +2,13 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useLocale } from '@/hooks/useLocale';
 import { Button } from '@/components/ui/button';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
 
 const Landing = () => {
   const { t } = useTranslation();
   const { locale } = useLocale();
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1 flex items-center justify-center bg-gradient-to-b from-background to-muted/30">
+    <div className="flex items-center justify-center bg-gradient-to-b from-background to-muted/30 min-h-[calc(100vh-theme(spacing.32))]">
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             {t('landingTitle')}
@@ -59,9 +54,6 @@ const Landing = () => {
             </div>
           </div>
         </div>
-      </main>
-      
-      <Footer />
     </div>
   );
 };

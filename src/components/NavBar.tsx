@@ -35,7 +35,13 @@ export const NavBar = () => {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    // Check if there's history to go back to
+    if (window.history.length > 1 && window.history.state?.idx > 0) {
+      navigate(-1);
+    } else {
+      // Fallback to locale home
+      navigate(`/${locale}/`);
+    }
   };
 
   const NavLinks = ({ isMobile = false }: { isMobile?: boolean }) => {

@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -297,10 +295,7 @@ const LetterDetail = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1 container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
           <div className="mb-6">
             <h1 className="text-3xl font-bold mb-2">{letter.filename}</h1>
@@ -444,9 +439,6 @@ const LetterDetail = () => {
             </Card>
           </div>
         </div>
-      </main>
-      
-      <Footer />
     </div>
   );
 };

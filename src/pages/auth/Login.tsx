@@ -5,8 +5,6 @@ import { useLocale } from '@/hooks/useLocale';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -53,10 +51,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-1 flex items-center justify-center py-12 bg-muted/30">
+    <div className="flex items-center justify-center py-12 bg-muted/30 min-h-[calc(100vh-theme(spacing.32))]">
         <div className="container max-w-md mx-auto px-4">
           <div className="bg-card rounded-lg border p-8 shadow-sm">
             <h1 className="text-3xl font-bold mb-6 text-center">{t('login')}</h1>
@@ -97,9 +92,6 @@ const Login = () => {
             </form>
           </div>
         </div>
-      </main>
-      
-      <Footer />
     </div>
   );
 };
