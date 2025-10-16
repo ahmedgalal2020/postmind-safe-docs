@@ -40,7 +40,24 @@
   "login": "Log in",
   "logout": "Logout",
   "signup": "Sign up",
-  "company": "Company",
+  "company": "Company Profile",
+  "companyDesc": "Manage company data",
+  "nav": {
+    "main": "Main navigation",
+    "back": "Back",
+    "menu": "Menu"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "letters": "Letters",
+    "detail": "Details",
+    "auth": "Authentication",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "impressum": "Imprint",
+    "avv": "DPA"
+  },
   "pricing": "Pricing",
   "contact": "Contact",
   "about": "About",

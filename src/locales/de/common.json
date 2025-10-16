@@ -40,7 +40,24 @@
   "login": "Anmelden",
   "logout": "Abmelden",
   "signup": "Registrieren",
-  "company": "Unternehmen",
+  "company": "Firmenprofil",
+  "companyDesc": "Firmendaten verwalten",
+  "nav": {
+    "main": "Hauptnavigation",
+    "back": "Zurück",
+    "menu": "Menü"
+  },
+  "breadcrumb": {
+    "home": "Startseite",
+    "letters": "Briefe",
+    "detail": "Details",
+    "auth": "Authentifizierung",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "impressum": "Impressum",
+    "avv": "AVV"
+  },
   "pricing": "Preise",
   "contact": "Kontakt",
   "about": "Über uns",
