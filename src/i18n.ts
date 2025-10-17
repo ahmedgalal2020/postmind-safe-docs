@@ -4,8 +4,10 @@ import { initReactI18next } from 'react-i18next';
 import deCommon from './locales/de/common.json';
 import enCommon from './locales/en/common.json';
 
-const stored = typeof window !== 'undefined' ? localStorage.getItem('locale') : null;
-const initialLng = stored === 'en' ? 'en' : 'de';
+const pathLocaleMatch = typeof window !== 'undefined' ? window.location.pathname.match(/^\/(de|en)(\/|$)/) : null;
+const urlLng = pathLocaleMatch ? pathLocaleMatch[1] : null;
+const stored = typeof window !== 'undefined' ? localStorage.getItem('pm_lang') : null;
+const initialLng = urlLng === 'en' || urlLng === 'de' ? urlLng : stored === 'en' ? 'en' : 'de';
 
 i18n
   .use(initReactI18next)

@@ -59,9 +59,20 @@ export const useBreadcrumbs = (): Breadcrumb[] => {
 
     if (routeTranslations[segment]) {
       label = routeTranslations[segment];
-    } else if (/^[0-9a-f-]{36}$/.test(segment)) {
-      // UUID format - likely an ID
-      label = t('breadcrumb.detail');
+    } else {
+      const prev = pathSegments[index - 1];
+      if (prev === 'letters') {
+        const cachedTitle = typeof window !== 'undefined' ? localStorage.getItem(`letterTitle:${segment}`) : null;
+        if (cachedTitle) {
+          label = cachedTitle;
+        } else {
+          const shortId = segment.length > 8 ? `${segment.slice(0, 8)}…` : segment;
+          label = `${t('breadcrumb.letters')} ${shortId}`;
+        }
+      } else if (/^[0-9a-f-]{36}$/.test(segment)) {
+        // Generic UUID format - likely an ID
+        label = t('breadcrumb.detail');
+      }
     }
 
     breadcrumbs.push({
