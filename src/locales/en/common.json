@@ -225,6 +225,42 @@
     "deleteConfirmDesc": "This action cannot be undone. All your documents, batches, rules, and events will be permanently deleted.",
     "deleteConfirm": "Yes, delete everything"
   },
+  "team": {
+    "title": "Team Management",
+    "description": "Manage your team members and invitations",
+    "businessPlanRequired": "Team features require Business plan",
+    "inviteMember": "Invite Team Member",
+    "inviteDescription": "Send an invitation to join your team",
+    "email": "Email",
+    "role": "Role",
+    "sendInvite": "Send Invite",
+    "inviteSent": "Invitation sent successfully",
+    "errorInviting": "Error sending invitation",
+    "errorLoading": "Error loading team data",
+    "pendingInvitations": "Pending Invitations",
+    "expires": "Expires",
+    "members": "Team Members",
+    "totalMembers": "members",
+    "joined": "Joined",
+    "confirmRemove": "Are you sure you want to remove this member?",
+    "memberRemoved": "Member removed successfully",
+    "errorRemoving": "Error removing member",
+    "roles": {
+      "owner": "Owner",
+      "admin": "Admin",
+      "member": "Member"
+    },
+    "acceptInvite": "Accept Team Invitation",
+    "acceptInviteDescription": "You've been invited to join a team",
+    "processing": "Processing invitation...",
+    "inviteAccepted": "You've successfully joined the team",
+    "inviteAcceptedTitle": "Success!",
+    "redirecting": "Redirecting to team page...",
+    "invalidInviteLink": "Invalid invitation link",
+    "errorAccepting": "Error accepting invitation",
+    "goToDashboard": "Go to Dashboard"
+  },
+  "sending": "Sending...",
   "error": "Error",
   "cancel": "Cancel"
 }

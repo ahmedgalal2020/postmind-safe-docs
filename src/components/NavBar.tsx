@@ -68,6 +68,9 @@ export const NavBar = () => {
             <Link to={`/${locale}/calendar`} onClick={handleLinkClick}>
               <Button variant="ghost" className={linkClass}>{t('calendar')}</Button>
             </Link>
+            <Link to={`/${locale}/dashboard/team`} onClick={handleLinkClick}>
+              <Button variant="ghost" className={linkClass}>{t('team.title')}</Button>
+            </Link>
             <Link to={`/${locale}/dashboard/billing`} onClick={handleLinkClick}>
               <Button variant="ghost" className={linkClass}>{t('billing.title')}</Button>
             </Link>

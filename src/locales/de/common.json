@@ -225,6 +225,42 @@
     "deleteConfirmDesc": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Ihre Dokumente, Batches, Regeln und Termine werden permanent gelöscht.",
     "deleteConfirm": "Ja, alles löschen"
   },
+  "team": {
+    "title": "Teamverwaltung",
+    "description": "Verwalten Sie Ihre Teammitglieder und Einladungen",
+    "businessPlanRequired": "Team-Funktionen erfordern Business-Plan",
+    "inviteMember": "Teammitglied einladen",
+    "inviteDescription": "Senden Sie eine Einladung zum Team",
+    "email": "E-Mail",
+    "role": "Rolle",
+    "sendInvite": "Einladung senden",
+    "inviteSent": "Einladung erfolgreich gesendet",
+    "errorInviting": "Fehler beim Senden der Einladung",
+    "errorLoading": "Fehler beim Laden der Teamdaten",
+    "pendingInvitations": "Ausstehende Einladungen",
+    "expires": "Läuft ab",
+    "members": "Teammitglieder",
+    "totalMembers": "Mitglieder",
+    "joined": "Beigetreten",
+    "confirmRemove": "Möchten Sie dieses Mitglied wirklich entfernen?",
+    "memberRemoved": "Mitglied erfolgreich entfernt",
+    "errorRemoving": "Fehler beim Entfernen des Mitglieds",
+    "roles": {
+      "owner": "Eigentümer",
+      "admin": "Administrator",
+      "member": "Mitglied"
+    },
+    "acceptInvite": "Team-Einladung annehmen",
+    "acceptInviteDescription": "Sie wurden eingeladen, einem Team beizutreten",
+    "processing": "Einladung wird verarbeitet...",
+    "inviteAccepted": "Sie sind dem Team erfolgreich beigetreten",
+    "inviteAcceptedTitle": "Erfolg!",
+    "redirecting": "Weiterleitung zur Teamseite...",
+    "invalidInviteLink": "Ungültiger Einladungslink",
+    "errorAccepting": "Fehler beim Annehmen der Einladung",
+    "goToDashboard": "Zum Dashboard"
+  },
+  "sending": "Senden...",
   "error": "Fehler",
   "cancel": "Abbrechen"
 }

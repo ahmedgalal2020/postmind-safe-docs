@@ -93,6 +93,7 @@ export type Database = {
       }
       letters: {
         Row: {
+          assigned_to: string | null
           batch_id: string
           created_at: string
           due_date: string | null
@@ -113,6 +114,7 @@ export type Database = {
           user_id: string
         }
         Insert: {
+          assigned_to?: string | null
           batch_id: string
           created_at?: string
           due_date?: string | null
@@ -133,6 +135,7 @@ export type Database = {
           user_id: string
         }
         Update: {
+          assigned_to?: string | null
           batch_id?: string
           created_at?: string
           due_date?: string | null
@@ -189,6 +192,112 @@ export type Database = {
           tag?: string | null
           user_id?: string
           weight_int?: number
+        }
+        Relationships: []
+      }
+      team_invitations: {
+        Row: {
+          accepted_at: string | null
+          created_at: string
+          email: string
+          expires_at: string
+          id: string
+          invited_by: string
+          role: Database["public"]["Enums"]["team_role"]
+          status: Database["public"]["Enums"]["invitation_status"]
+          team_id: string
+          token: string
+        }
+        Insert: {
+          accepted_at?: string | null
+          created_at?: string
+          email: string
+          expires_at?: string
+          id?: string
+          invited_by: string
+          role?: Database["public"]["Enums"]["team_role"]
+          status?: Database["public"]["Enums"]["invitation_status"]
+          team_id: string
+          token: string
+        }
+        Update: {
+          accepted_at?: string | null
+          created_at?: string
+          email?: string
+          expires_at?: string
+          id?: string
+          invited_by?: string
+          role?: Database["public"]["Enums"]["team_role"]
+          status?: Database["public"]["Enums"]["invitation_status"]
+          team_id?: string
+          token?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "team_invitations_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      team_members: {
+        Row: {
+          created_at: string
+          id: string
+          invited_by: string | null
+          role: Database["public"]["Enums"]["team_role"]
+          team_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          invited_by?: string | null
+          role?: Database["public"]["Enums"]["team_role"]
+          team_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          invited_by?: string | null
+          role?: Database["public"]["Enums"]["team_role"]
+          team_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "team_members_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teams: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          owner_user_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          owner_user_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          owner_user_id?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -293,10 +402,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_team_admin: {
+        Args: { _team_id: string; _user_id: string }
+        Returns: boolean
+      }
+      is_team_member: {
+        Args: { _team_id: string; _user_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      invitation_status: "pending" | "accepted" | "expired" | "revoked"
+      team_role: "owner" | "admin" | "member"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -423,6 +540,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      invitation_status: ["pending", "accepted", "expired", "revoked"],
+      team_role: ["owner", "admin", "member"],
+    },
   },
 } as const

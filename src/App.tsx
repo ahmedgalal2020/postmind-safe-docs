@@ -13,6 +13,8 @@ import LetterDetail from "./pages/LetterDetail";
 import Rules from "./pages/Rules";
 import Calendar from "./pages/Calendar";
 import Billing from "./pages/Billing";
+import Team from "./pages/Team";
+import AcceptInvite from "./pages/AcceptInvite";
 import Impressum from "./pages/legal/Impressum";
 import Privacy from "./pages/legal/Privacy";
 import Terms from "./pages/legal/Terms";
@@ -42,6 +44,8 @@ const App = () => (
             <Route path="/:locale/rules" element={<Rules />} />
             <Route path="/:locale/calendar" element={<Calendar />} />
             <Route path="/:locale/dashboard/billing" element={<Billing />} />
+            <Route path="/:locale/dashboard/team" element={<Team />} />
+            <Route path="/:locale/team/accept-invite" element={<AcceptInvite />} />
             
             {/* Legal pages */}
             <Route path="/:locale/legal/privacy" element={<Privacy />} />
